@@ -6,7 +6,13 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wordpuzzle.settings")
+
+    if "test" in sys.argv:
+        print("Using test_settings.py")
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wordpuzzle.test_settings")
+    else:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wordpuzzle.settings")
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

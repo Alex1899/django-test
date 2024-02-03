@@ -1,5 +1,4 @@
 from django.apps import AppConfig
-
 from .word_loader import WordLoader
 
 

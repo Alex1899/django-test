@@ -33,7 +33,7 @@ You can run the application using the Django development server:
 The API will be available at `http://localhost:8000/`.
 
 ```
-python manage.py runserver
+python manage.py runserver --noreload
 
 ```
 
@@ -64,7 +64,7 @@ To measure test coverage, you can use `coverage.py`:
 1. Run the tests with coverage:
 
    ```
-   coverage run manage.py test
+   coverage run --source='api' manage.py test
    ```
 
 2. Generate a coverage report:

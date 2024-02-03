@@ -49,7 +49,10 @@ class WordPuzzleApi(View):
         sequence = find_sequence(start_word, end_word, words, neighbours)
         end_time = time.time()
         total_time = end_time - start_time
-        logging.info(f"Total time taken to find sequence: {round(total_time * 1000, 2)} ms")
+        logger.info(f"---------------------------------------------")
+        logger.info(f"Total time taken to find sequence: {round(total_time * 1000, 2)} ms")
+        logger.info(f"---------------------------------------------")
+
 
         if sequence:
             return JsonResponse({"sequence": sequence})

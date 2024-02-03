@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 
@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
@@ -115,9 +115,15 @@ LOGGING = {
         "level": "INFO",
     },
     "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": False,
+        },
         "api.views": {
             "handlers": ["console"],
             "level": "INFO",
+            "propagate": False,
         },
     },
 }
@@ -134,6 +140,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+TESTING = False
+
+WORDS_FILE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "api", "data", "words.txt")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

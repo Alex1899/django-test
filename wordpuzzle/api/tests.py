@@ -1,8 +1,8 @@
 from django.test import TestCase
+# from unittest.mock import patch
 from collections import defaultdict
 from django.urls import reverse
 from .utils import find_sequence, generate_neighbours
-
 
 
 # API endpoint test
@@ -15,9 +15,9 @@ class WordPuzzleApiTest(TestCase):
         Test that the API returns a 200 status code and the correct sequence
         when given valid startWord and endWord parameters.
         """
-        response = self.client.get(self.url, {"startWord": "hit", "endWord": "cog"})
+        response = self.client.get(self.url, {"startWord": "cat", "endWord": "pop"})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"sequence":["hit", "cit", "cot", "cog"]})
+        self.assertEqual(response.json(), {"sequence": ["cat", "bat", "bot", "bop", "pop"]})
 
     def test_get_no_start_word(self):
         response = self.client.get(self.url, {"endWord": "cog"})
@@ -36,36 +36,37 @@ class WordPuzzleApiTest(TestCase):
         )
 
     def test_get_start_word_not_in_dictionary(self):
-        response = self.client.get(self.url, {"startWord": "yyy", "endWord": "cog"})
+        response = self.client.get(self.url, {"startWord": "yyy", "endWord": "pop"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"sequence": []})
 
     def test_get_end_word_not_in_dictionary(self):
-        response = self.client.get(self.url, {"startWord": "hit", "endWord": "ghj"})
+        response = self.client.get(self.url, {"startWord": "cat", "endWord": "pep"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"sequence": []})
 
     def test_get_no_possible_sequence(self):
-        response = self.client.get(self.url, {"startWord": "hit", "endWord": "xyz"})
+        response = self.client.get(self.url, {"startWord": "cat", "endWord": "xyz"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"sequence": []})
 
     def test_get_non_alphanumeric_characters(self):
-        response = self.client.get(self.url, {"startWord": "h1t", "endWord": "cog"})
+        response = self.client.get(self.url, {"startWord": "h1t", "endWord": "xyz"})
         self.assertEqual(response.status_code, 400)
         self.assertEqual(
             response.json(),
-           {"error": "'startWord' and 'endWord' must only contain alphabetic characters"},
+            {
+                "error": "'startWord' and 'endWord' must only contain alphabetic characters"
+            },
         )
 
     def test_get_different_length_words(self):
-        response = self.client.get(self.url, {"startWord": "hit", "endWord": "cogs"})
+        response = self.client.get(self.url, {"startWord": "cat", "endWord": "cogs"})
         self.assertEqual(response.status_code, 400)
         self.assertEqual(
             response.json(),
             {"error": "'startWord' and 'endWord' must be of the same length"},
         )
-
 
 
 # Algorithm test: find shortest sequence
