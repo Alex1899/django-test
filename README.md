@@ -55,7 +55,6 @@ You can run the tests using Django's test runner:
 
 ```
 python manage.py test
-
 ```
 
 ## Test Coverage
