@@ -42,9 +42,12 @@ def find_sequence(
 
         # For each possible one-letter transformation of the current word
         for i in range(len(current_word)):
+            # Create a wildcard word by replacing the i-th character with a wildcard "*"
             wildcard_word = current_word[:i] + "*" + current_word[i + 1 :]
 
+            # For each word that matches the wildcard
             for word in neighbours[wildcard_word]:
+                # If the word has not been visited yet add it to the queue
                 if word not in visited:
                     queue.append((word, path + [word]))
                     visited.add(word)
