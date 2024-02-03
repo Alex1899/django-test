@@ -55,6 +55,7 @@ curl -X GET 'http://localhost:8000/api/wordpuzzle?startWord=hit&endWord=cog' -w 
 ```
 
 This should return a JSON response with the shortest sequence of words from 'hit' to 'cog'.
+Example: `{"sequence": ["hit", "cit", "cot", "cog"]}`
 
 ## Running the Tests
 
