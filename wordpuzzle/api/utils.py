@@ -4,8 +4,19 @@ from typing import List, Set
 
 
 def find_sequence(start_word: str, end_word: str, words: Set[str] , neighbours: defaultdict[str, List[str]] ):
-    # Create a dictionary where the keys are words with one letter replaced by a wildcard
-    # and the values are lists of words that match the key
+    """
+    Finds a sequence of words from start_word to end_word, each differing by one letter.
+
+    Parameters:
+    start_word (str): Starting word of the sequence.
+    end_word (str): Ending word of the sequence.
+    words (Set[str]): Set of all possible words.
+    neighbours (defaultdict[str, List[str]]): Dictionary mapping wildcard words to matching words.
+
+    Returns:
+    list: Sequence from start_word to end_word, or empty list if no sequence exists.
+    """
+
     if start_word not in words or end_word not in words:
         return []
 
@@ -19,10 +30,8 @@ def find_sequence(start_word: str, end_word: str, words: Set[str] , neighbours: 
     visited = set([start_word])
 
     while queue:
-        # Dequeue a word from the queue
         current_word, path = queue.popleft()
 
-        # If the current word is the end word, return the path
         if current_word == end_word:
             return path
 
@@ -34,20 +43,27 @@ def find_sequence(start_word: str, end_word: str, words: Set[str] , neighbours: 
             if wildcard_word not in neighbours:
                 continue
 
-            # For each word that matches the transformation
             for word in neighbours[wildcard_word]:
-                # If the word has not been visited
                 if word not in visited:
-                    # Enqueue the word and the path to it
                     queue.append((word, path + [word]))
-                    # Mark the word as visited
                     visited.add(word)
 
-    # If no path was found, return an empty list
     return []
 
 
 def generate_neighbours(words):
+    """
+    Generates a dictionary mapping wildcard words to matching words. Used only during testing.
+
+    A wildcard word is created by replacing each letter of the word with a wildcard.
+
+    Parameters:
+    words (Iterable[str]): An iterable of words.
+
+    Returns:
+    defaultdict[str, List[str]]: A dictionary where the keys are wildcard words and the values are lists of words that match the wildcard.
+    """
+
     neighbors = defaultdict(list)
     for word in words:
         for i in range(len(word)):

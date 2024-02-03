@@ -10,12 +10,11 @@ class WordPuzzleApiTest(TestCase):
     def setUp(self):
         self.url = reverse("wordpuzzle")
 
-    def test_get(self):
-        response = self.client.get(self.url, {"startWord": "hit", "endWord": "cog"})
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"sequence" : ["hit", "cit", "cot", "cog"]})
-
     def test_get_success(self):
+        """
+        Test that the API returns a 200 status code and the correct sequence
+        when given valid startWord and endWord parameters.
+        """
         response = self.client.get(self.url, {"startWord": "hit", "endWord": "cog"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"sequence":["hit", "cit", "cot", "cog"]})
