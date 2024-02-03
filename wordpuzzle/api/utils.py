@@ -39,10 +39,6 @@ def find_sequence(start_word: str, end_word: str, words: Set[str] , neighbours: 
         for i in range(len(current_word)):
             wildcard_word = current_word[:i] + "*" + current_word[i + 1 :]
 
-            # If the wildcard_word is not in neighbours, skip to the next iteration
-            if wildcard_word not in neighbours:
-                continue
-
             for word in neighbours[wildcard_word]:
                 if word not in visited:
                     queue.append((word, path + [word]))

@@ -50,6 +50,22 @@ class WordPuzzleApiTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"sequence": []})
 
+    def test_get_non_alphanumeric_characters(self):
+        response = self.client.get(self.url, {"startWord": "h1t", "endWord": "cog"})
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(
+            response.json(),
+           {"error": "'startWord' and 'endWord' must only contain alphabetic characters"},
+        )
+
+    def test_get_different_length_words(self):
+        response = self.client.get(self.url, {"startWord": "hit", "endWord": "cogs"})
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(
+            response.json(),
+            {"error": "'startWord' and 'endWord' must be of the same length"},
+        )
+
 
 
 # Algorithm test: find shortest sequence
