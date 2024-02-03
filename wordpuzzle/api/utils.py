@@ -3,7 +3,12 @@ from collections import defaultdict
 from typing import List, Set
 
 
-def find_sequence(start_word: str, end_word: str, words: Set[str] , neighbours: defaultdict[str, List[str]] ):
+def find_sequence(
+    start_word: str,
+    end_word: str,
+    words: Set[str],
+    neighbours: defaultdict[str, List[str]],
+) -> List[str]:
     """
     Finds a sequence of words from start_word to end_word, each differing by one letter.
 
