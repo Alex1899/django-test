@@ -17,7 +17,7 @@ class WordPuzzleApi(View):
 
         Parameters:
         - request (HttpRequest): The request object.
-        
+
         Returns:
         - JsonResponse: A response with either the sequence of words or an error message.
         """
@@ -42,8 +42,6 @@ class WordPuzzleApi(View):
                 {"error": "'startWord' and 'endWord' must be of the same length"},
                 status=400,
             )
-
-
 
         start_time = time.time()
         words = WordLoader.get_word_set()
