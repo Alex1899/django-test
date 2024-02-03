@@ -44,7 +44,7 @@ You can test the endpoint using `curl` or any HTTP client like Postman.
 Here's an example of how to test the endpoint using `curl`:
 
 ```
-curl -X GET 'http://localhost:8000/api/wordpuzzle?startWord=hit&endWord=cog'
+curl -X GET 'http://localhost:8000/api/wordpuzzle?startWord=hit&endWord=cog' -w '\n'
 ```
 
 This should return a JSON response with the shortest sequence of words from 'hit' to 'cog'.
