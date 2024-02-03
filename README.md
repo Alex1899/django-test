@@ -42,7 +42,6 @@ Then run the server with:
 
 ```
 python manage.py runserver --noreload
-
 ```
 
 ## Testing the Endpoint
