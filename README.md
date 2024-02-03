@@ -12,7 +12,7 @@ This is a Django application that provides an API for solving word puzzles.
 
    ```
    git clone https://github.com/alex1899/wordpuzzleapi.git
-   cd wordpuzzleapi/wordpuzzle/
+   cd wordpuzzleapi/
    ```
 
 2. Install the requirements:
@@ -31,6 +31,14 @@ This is a Django application that provides an API for solving word puzzles.
 You can run the application using the Django development server:
 
 The API will be available at `http://localhost:8000/`.
+
+First, go into wordpuzzle folder:
+
+```
+cd wordpuzzle/
+```
+
+Then run the server with:
 
 ```
 python manage.py runserver --noreload
