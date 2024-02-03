@@ -17,9 +17,7 @@ class WordPuzzleApi(View):
 
         Parameters:
         - request (HttpRequest): The request object.
-        - *args: Variable length argument list.
-        - **kwargs: Arbitrary keyword arguments.
-
+        
         Returns:
         - JsonResponse: A response with either the sequence of words or an error message.
         """
