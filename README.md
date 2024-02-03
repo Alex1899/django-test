@@ -12,7 +12,7 @@ This is a Django application that provides an API for solving word puzzles.
 
    ```
    git clone https://github.com/alex1899/wordpuzzleapi.git
-   cd wordpuzzleapi
+   cd wordpuzzleapi/wordpuzzle/
    ```
 
 2. Install the requirements:
