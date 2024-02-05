@@ -91,5 +91,6 @@ The HTML report will be available in the `htmlcov` directory.
 
 Coverage report for the project:
 
-<img width="686" alt="Screenshot 2024-02-03 at 20 10 21" src="https://github.com/Alex1899/wordpuzzleapi/assets/48056584/fff50d9f-d012-46a7-a77e-cc94bcad8320">
+<img width="650" alt="Screenshot 2024-02-05 at 06 46 01" src="https://github.com/Alex1899/wordpuzzleapi/assets/48056584/fa33ea43-949d-4294-ba92-3b82babd866a">
+
 
