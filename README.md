@@ -46,7 +46,7 @@ python manage.py runserver --noreload
 
 ## Testing the Endpoint
 
-You can test the endpoint using `curl` or any HTTP client like Postman.
+You can test the endpoint using `curl`, any HTTP client like Postman or by visiting the url in the browser
 
 Here's an example of how to test the endpoint using `curl`:
 
@@ -57,6 +57,8 @@ curl -X GET 'http://localhost:8000/api/wordpuzzle?startWord=hit&endWord=cog' -w 
 This should return a JSON response with the shortest sequence of words from 'hit' to 'cog'.
 
 Example response: `{"sequence": ["hit", "cit", "cot", "cog"]}`
+
+Modify the `startWord` and `endWord` to get a different sequence.
 
 ## Running the Tests
 
@@ -92,4 +94,3 @@ The HTML report will be available in the `htmlcov` directory.
 Coverage report for the project:
 
 <img width="686" alt="Screenshot 2024-02-03 at 20 10 21" src="https://github.com/Alex1899/wordpuzzleapi/assets/48056584/fff50d9f-d012-46a7-a77e-cc94bcad8320">
-
